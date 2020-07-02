@@ -1,0 +1,38 @@
+nodered:
+  build: .
+  ports:
+    - "1880:1880"
+  volumes:
+    - ./node-red-data:/data
+    - ./public:/home/nol/node-red-static
+  links:
+    - mongodb
+mongodb:
+  ports:
+    - "27017:27017"
+  image: mongo
+  volumes:
+    - ./mongo-data/conf/mongod.conf:/etc/mongod.conf
+    - ./mongo-data/data/db:/data/db
+mosquitto:
+  image: eclipse-mosquitto:latest
+  container_name: mosquitto
+  restart: always
+  mem_limit: 128m
+  expose:
+      - "1883"
+      - "9001"
+  ports:
+      - "1883:1883"
+      - "9001:9001"
+  #volumes:
+    #- ./mqtt-data/mosquitto.conf:/mosquitto/config/mosquitto.conf
+sql-server-db:
+  image: microsoft/mssql-server-linux:2017-latest
+  container_name: sql-server-db
+  ports:
+    - "1433:1433"
+  environment:
+    #SA_PASSWORD: "change_this_password"
+    SA_PASSWORD: "blueScreen777"
+    ACCEPT_EULA: "Y"

@@ -1,0 +1,1 @@
+[{"id":"b23edfb2.13d27","type":"rdkafka out","z":"7d29a0d1.88f43","name":"","topic":"lgpd-person-input","key":"","partition":"-1","broker":"50f1eb39.f8f7f4","x":570,"y":280,"wires":[]},{"id":"50f1eb39.f8f7f4","type":"kafka-broker","z":"7d29a0d1.88f43","broker":"192.168.100.34:9092","clientid":""}]
